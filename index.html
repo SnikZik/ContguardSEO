@@ -1,0 +1,992 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<title>SEO Report · Contguard · מאי 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F2EC;
+    --ink:#0B0B0F;
+    --purple:#4B2BE0;
+    --lilac:#C7BBF5;
+    --rule:rgba(11,11,15,.16);
+    --muted:rgba(11,11,15,.55);
+    --hairline:rgba(11,11,15,.10);
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:var(--paper); color:var(--ink); }
+  body{
+    font-family:'Heebo','Archivo',system-ui,sans-serif;
+    font-size:18px; line-height:1.6;
+  }
+  .mono{ font-family:'JetBrains Mono', ui-monospace, monospace; letter-spacing:.08em; text-transform:uppercase;}
+  .ltr{ direction:ltr; unicode-bidi:isolate; display:inline-block;}
+
+  /* Page wrapper */
+  .doc{
+    max-width:1080px; margin:0 auto; padding:48px 56px 120px;
+    background:var(--paper);
+  }
+
+  /* Header bar */
+  header.doc-head{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-bottom:20px; border-bottom:1px solid var(--rule);
+    font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--muted);
+    text-transform:uppercase; letter-spacing:.14em;
+  }
+  header.doc-head .logo{
+    color:var(--ink); font-family:'Archivo Black'; letter-spacing:-.04em;
+    font-size:22px; text-transform:none; direction:ltr;
+  }
+  header.doc-head .logo .dot{ color:var(--purple);}
+
+  /* Cover */
+  .cover{
+    padding:64px 0 56px; border-bottom:1px solid var(--rule);
+  }
+  .cover .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:13px;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--purple);
+  }
+  .cover h1{
+    font-family:'Archivo Black','Heebo',sans-serif;
+    font-size:96px; line-height:.95; letter-spacing:-.035em;
+    margin:24px 0 0;
+  }
+  .cover h1 .dot{ color:var(--purple); }
+  .cover .lede{
+    font-size:22px; line-height:1.5; max-width:780px; color:var(--ink);
+    margin:32px 0 0; font-weight:400;
+  }
+  .cover .meta{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:32px;
+    margin-top:48px; padding-top:24px; border-top:1px solid var(--rule);
+  }
+  .cover .meta .k{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.16em; margin-bottom:6px;}
+  .cover .meta .v{ font-family:'Archivo','Heebo',sans-serif; font-weight:700; font-size:18px;}
+
+  /* Sections */
+  section.chapter{
+    padding:72px 0 24px; border-top:1px solid var(--rule);
+  }
+  section.chapter:first-of-type{ border-top:none;}
+  .chap-head{ display:flex; align-items:baseline; gap:18px; margin-bottom:28px;}
+  .chap-num{
+    font-family:'JetBrains Mono', monospace; font-size:13px;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--purple);
+  }
+  .chap-head h2{
+    font-family:'Archivo Black','Heebo',sans-serif;
+    font-size:52px; line-height:1; letter-spacing:-.025em;
+    margin:0;
+  }
+  .chap-head h2 .dot{ color:var(--purple);}
+
+  .lede-block{
+    font-size:22px; line-height:1.5; max-width:760px;
+    color:var(--ink); margin:0 0 28px; font-weight:400;
+  }
+  p{ font-size:18px; line-height:1.65; max-width:760px; margin:0 0 16px;}
+  p b{ font-weight:700; color:var(--ink);}
+
+  /* KPI summary cards */
+  .kpis{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+    border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+    margin:32px 0;
+  }
+  .kpi{
+    padding:24px 24px;
+    border-left:1px solid var(--rule);
+  }
+  .kpi:first-child{ border-left:none; padding-right:0;}
+  .kpi .k{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.14em;}
+  .kpi .v{ font-family:'Archivo Black'; font-size:48px; line-height:1; letter-spacing:-.025em; margin-top:8px;}
+  .kpi .v .u{ font-family:'Archivo'; font-weight:600; font-size:22px; color:var(--muted); margin-right:4px;}
+  .kpi .d{ margin-top:8px; font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--muted);}
+  .kpi .d.up{ color:#0B7A3B;}
+  .kpi .d.down{ color:#A4001A;}
+
+  /* Tables */
+  table.report{
+    width:100%; border-collapse:collapse;
+    font-family:'Archivo','Heebo',sans-serif; font-size:15px;
+    margin:24px 0;
+  }
+  table.report th{
+    text-align:right; font-family:'JetBrains Mono', monospace; font-size:11px;
+    color:var(--muted); text-transform:uppercase; letter-spacing:.14em;
+    padding:12px 14px; border-bottom:1px solid var(--rule); font-weight:500;
+    background:transparent;
+  }
+  table.report td{
+    padding:12px 14px; border-bottom:1px solid var(--hairline);
+    vertical-align:middle; font-size:15px;
+  }
+  table.report tbody tr:hover td{ background:rgba(75,43,224,.04);}
+  table.report td.kw{ font-weight:600;}
+  table.report td.num{
+    font-family:'JetBrains Mono', monospace; font-size:14px;
+    text-align:center; width:90px; color:var(--ink);
+  }
+  table.report td.num.muted{ color:var(--muted);}
+
+  /* Position pills */
+  .pill{
+    display:inline-block; min-width:36px; padding:3px 10px; text-align:center;
+    border-radius:999px; font-family:'JetBrains Mono', monospace; font-size:13px; font-weight:500;
+  }
+  .pill-1{ background:var(--purple); color:var(--paper);}
+  .pill-top{ background:var(--lilac); color:var(--ink);}
+  .pill-mid{ background:rgba(11,11,15,.07); color:var(--ink);}
+  .pill-low{ background:transparent; color:var(--muted);}
+
+  /* Trend arrows */
+  .trend{ font-family:'JetBrains Mono', monospace; font-size:13px;}
+  .trend.up{ color:#0B7A3B;}
+  .trend.down{ color:#A4001A;}
+  .trend.flat{ color:var(--muted);}
+
+  /* Mover cards */
+  .movers{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin:24px 0;}
+  .mover{
+    border:1px solid var(--rule); padding:22px;
+  }
+  .mover .l{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); letter-spacing:.14em; text-transform:uppercase;}
+  .mover .row{ display:flex; align-items:baseline; gap:10px; margin-top:16px;}
+  .mover .from{ font-family:'JetBrains Mono', monospace; font-size:18px; color:var(--muted); text-decoration:line-through;}
+  .mover .arrow{ font-family:'Archivo Black'; font-size:14px;}
+  .mover .to{ font-family:'Archivo Black'; font-size:54px; color:var(--purple); line-height:1;}
+  .mover p{ font-size:14px; color:var(--muted); margin-top:14px; line-height:1.5;}
+
+  /* Image holders */
+  .figure{
+    margin:24px 0; padding:14px; background:#fff; border:1px solid var(--rule);
+  }
+  .figure img{ display:block; max-width:100%; height:auto; margin:0 auto;}
+  .figure .cap{
+    margin-top:10px; font-family:'JetBrains Mono', monospace; font-size:11px;
+    color:var(--muted); text-transform:uppercase; letter-spacing:.14em; text-align:center;
+  }
+
+  /* AI authority list */
+  .ai-list{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:20px 0;}
+  .ai-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 18px; border:1px solid var(--rule);
+  }
+  .ai-row .kw{ font-family:'Archivo','Heebo'; font-weight:600; font-size:15px;}
+  .ai-row .dot{ color:var(--purple); font-size:22px;}
+
+  /* Volume bars */
+  .vol-list{ margin:20px 0;}
+  .vol-row{
+    display:grid; grid-template-columns:280px 1fr 80px;
+    gap:16px; align-items:center;
+    padding:8px 0; border-bottom:1px solid var(--hairline);
+    font-size:14px;
+  }
+  .vol-row .kw{ font-family:'Archivo','Heebo'; font-size:14px;}
+  .vol-row .track{ height:8px; background:rgba(11,11,15,.05);}
+  .vol-row .fill{ height:100%; background:var(--purple);}
+  .vol-row .v{ font-family:'JetBrains Mono', monospace; font-size:13px; text-align:left;}
+
+  /* Plan grid */
+  .plan{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:24px 0;}
+  .plan-item{ border:1px solid var(--rule); padding:22px;}
+  .plan-item .n{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--purple); letter-spacing:.16em; text-transform:uppercase;}
+  .plan-item .t{ font-family:'Archivo','Heebo'; font-weight:700; font-size:20px; margin-top:6px; line-height:1.3;}
+  .plan-item p{ margin-top:8px; font-size:14px; color:var(--muted); line-height:1.5;}
+
+  /* Note callout */
+  .note{
+    background:var(--ink); color:var(--paper);
+    padding:32px 36px; margin:32px 0;
+  }
+  .note .tag{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--lilac);}
+  .note p{ font-size:20px; line-height:1.55; margin:14px 0 0; color:var(--paper); max-width:none;}
+  .note p b{ color:var(--lilac);}
+  .note .sig{ margin-top:20px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(245,242,236,.6);}
+
+  /* Asks */
+  .asks{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin:24px 0;}
+  .ask{ }
+  .ask .n{ font-family:'Archivo Black'; font-size:44px; color:var(--purple); line-height:1;}
+  .ask .t{ font-family:'Archivo','Heebo'; font-weight:700; font-size:20px; margin-top:14px; line-height:1.3;}
+  .ask p{ font-size:14px; color:var(--muted); margin-top:8px; line-height:1.55;}
+
+  /* Footer / contact */
+  footer.doc-foot{
+    margin-top:64px; padding-top:32px; border-top:1px solid var(--rule);
+    display:grid; grid-template-columns: 1fr 1fr; gap:48px; align-items:start;
+  }
+  footer.doc-foot .lockup{
+    display:flex; align-items:center; gap:18px;
+    font-family:'Archivo Black'; font-size:32px; letter-spacing:-.04em;
+    direction:ltr;
+    justify-content:flex-end;
+  }
+  footer.doc-foot .lockup .dot{ color:var(--purple);}
+  footer.doc-foot .lockup .x{ font-family:'Archivo Black'; font-size:22px; color:var(--muted); font-weight:400;}
+  footer.doc-foot .lockup .client{ font-family:'Archivo','Heebo'; font-weight:700; font-size:28px; letter-spacing:-.02em;}
+  footer.doc-foot .contact{
+    display:grid; grid-template-columns: 110px 1fr; row-gap:10px; column-gap:16px;
+    font-family:'Archivo','Heebo'; font-size:15px; align-items:baseline;
+  }
+  footer.doc-foot .contact .k{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); letter-spacing:.14em; text-transform:uppercase;}
+  footer.doc-foot .contact .v{ font-weight:600;}
+  footer.doc-foot .copyright{
+    grid-column: 1 / -1; margin-top:32px; padding-top:18px; border-top:1px solid var(--hairline);
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
+    display:flex; justify-content:space-between;
+  }
+
+  /* TOC */
+  .toc{
+    border:1px solid var(--rule); padding:28px 32px; margin:32px 0 0;
+    background:rgba(255,255,255,.4);
+  }
+  .toc .h{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); letter-spacing:.16em; text-transform:uppercase; margin-bottom:14px;}
+  .toc ol{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:6px 32px;}
+  .toc li{ display:flex; gap:12px; align-items:baseline; padding:6px 0; border-bottom:1px solid var(--hairline); font-size:15px;}
+  .toc li .n{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--purple); width:28px;}
+  .toc li .t{ flex:1;}
+
+  /* Section heading helper */
+  h3.sub{ font-family:'Archivo','Heebo'; font-weight:700; font-size:22px; margin:32px 0 12px; line-height:1.2;}
+
+  /* Two-column layout */
+  .two-col{ display:grid; grid-template-columns: 1fr 1fr; gap:32px; align-items:start;}
+
+  /* Source caption */
+  .source{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted);
+    letter-spacing:.14em; text-transform:uppercase; margin-top:8px;
+  }
+
+  /* Print */
+  @media print{
+    body{ background:#fff;}
+    .doc{ padding:24px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+  <header class="doc-head">
+    <span class="logo">SNIR<span class="dot">.</span></span>
+    <span class="ltr">SEO Report · Contguard · May 2026</span>
+  </header>
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="eyebrow">דוח קידום אורגני · ארבעה חודשי עבודה</div>
+    <h1>Contguard<span class="dot">.</span></h1>
+    <p class="lede">
+      סיכום ביצועי הקידום האורגני, מינואר עד מאי 2026. תנועה, מיקומים, פרופיל
+      תוכן ותוכנית ההמשך לחודשים הקרובים, בדף אחד.
+    </p>
+    <div class="meta">
+      <div>
+        <div class="k">לקוח</div>
+        <div class="v">Contguard</div>
+      </div>
+      <div>
+        <div class="k">דומיין</div>
+        <div class="v ltr">contguard.com</div>
+      </div>
+      <div>
+        <div class="k">תקופה</div>
+        <div class="v ltr">Jan → May 2026</div>
+      </div>
+      <div>
+        <div class="k">הוכן ע״י</div>
+        <div class="v">שניר זיו · Snir<span style="color:var(--purple)">.</span></div>
+      </div>
+    </div>
+
+    <div class="toc">
+      <div class="h">תוכן הדוח</div>
+      <ol>
+        <li><span class="n">01</span><span class="t">רקע תחרותי</span></li>
+        <li><span class="n">02</span><span class="t">סיכום מנהלים</span></li>
+        <li><span class="n">03</span><span class="t">תנועה אורגנית · Semrush</span></li>
+        <li><span class="n">04</span><span class="t">טבלת מיקומי מילות מפתח</span></li>
+        <li><span class="n">05</span><span class="t">הזנקות מהותיות</span></li>
+        <li><span class="n">06</span><span class="t">נוכחות במנועי AI</span></li>
+        <li><span class="n">07</span><span class="t">Google Analytics · משתמשים</span></li>
+        <li><span class="n">08</span><span class="t">דפי נחיתה מובילים</span></li>
+        <li><span class="n">09</span><span class="t">נפח חיפוש · מילים אסטרטגיות</span></li>
+        <li><span class="n">10</span><span class="t">מילים בעמוד הראשון של גוגל</span></li>
+        <li><span class="n">11</span><span class="t">הערה על חודש מרץ</span></li>
+        <li><span class="n">12</span><span class="t">תוכנית מאי</span></li>
+        <li><span class="n">13</span><span class="t">בקשות ומה הלאה</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 01 CONTEXT -->
+  <section class="chapter">
+    <div class="chap-head">
+      <span class="chap-num">01</span>
+      <h2>רקע תחרותי<span class="dot">.</span></h2>
+    </div>
+
+    <p class="lede-block">
+      לפני שצוללים למספרים, חשוב להבין במה מדובר. התחום של <span class="ltr">supply chain</span>
+      הוא אחד התחרותיים בעולם ה-<span class="ltr">B2B</span> הדיגיטלי, והתחרות הישירה היא מול שחקנים
+      של אמת.
+    </p>
+
+    <div class="two-col">
+      <div>
+        <h3 class="sub">מי התחרות שלנו</h3>
+        <p>
+          <b>אתרי ENTERPRISE ותיקי תעשייה</b> עם נוכחות דיגיטלית של עשור עד
+          עשרים שנה. אתרים עם מאות אלפי עמודים, אלפי מאמרים, ומאגר לינקים עמוק
+          מהמוניטורים הגדולים בעולם. הם מממנים תוכן אורגני בתקציבים מהותיים, ולפעמים מעסיקים
+          צוותי תוכן שלמים.
+        </p>
+      </div>
+      <div>
+        <h3 class="sub">מה זה אומר על קצב ההתקדמות</h3>
+        <p>
+          קידום בקטגוריה הזו <b>אינו קמפיין טקטי</b>. זה תהליך מתמשך שמתגלגל חודש אחר
+          חודש. מילה שהיום במקום 50 תגיע לעמוד הראשון תוך כמה חודשים, ולא
+          בזכות מזל, אלא בזכות תוכן ולינקים מצטברים לאורך זמן. זו לא ספרינט,
+          זה מרתון.
+        </p>
+      </div>
+    </div>
+
+    <div class="kpis" style="grid-template-columns:repeat(3,1fr);">
+      <div class="kpi">
+        <div class="k">מה מתחרה</div>
+        <div class="v" style="font-size:32px;">Enterprise</div>
+        <div class="d">אתרי תאגידים גלובליים עם <span class="ltr">DR 70+</span></div>
+      </div>
+      <div class="kpi">
+        <div class="k">גיל אתרים מתחרים</div>
+        <div class="v" style="font-size:32px;">10+ שנים</div>
+        <div class="d">היסטוריית דומיין, תוכן מצטבר</div>
+      </div>
+      <div class="kpi">
+        <div class="k">טווח להתקדמות משמעותית</div>
+        <div class="v" style="font-size:32px;">6-9 חודש</div>
+        <div class="d">במילים תחרותיות עם נפח גבוה</div>
+      </div>
+    </div>
+
+    <p>
+      למרות הכל, ארבעת החודשים האחרונים הראו תזוזה ממשית במיקומים, כניסה לתוצאות מנועי AI,
+      ועליה בתנועה האורגנית. התקדמות הזו אמיתית בדיוק כי היא מול מי שהיא.
+    </p>
+  </section>
+
+  <!-- 02 EXEC SUMMARY -->
+  <section class="chapter">
+    <div class="chap-head">
+      <span class="chap-num">02</span>
+      <h2>סיכום מנהלים<span class="dot">.</span></h2>
+    </div>
+
+    <p class="lede-block">
+      ארבעה חודשי קידום הניבו צמיחה רציפה בתנועה האורגנית, מעבר של מילות
+      מפתח ליבה לעמוד הראשון, וכניסה לתוצאות של מנועי תשובות מבוססי AI.
+    </p>
+
+    <div class="kpis">
+      <div class="kpi">
+        <div class="k">תנועה אורגנית · Semrush</div>
+        <div class="v ltr">23.3K</div>
+        <div class="d up">▲ +18.35% ב-6 חודשים</div>
+      </div>
+      <div class="kpi">
+        <div class="k">משתמשים · GA</div>
+        <div class="v ltr">775</div>
+        <div class="d">סה״כ ב-5 חודשים</div>
+      </div>
+      <div class="kpi">
+        <div class="k">מילים במקום 1</div>
+        <div class="v">8<span class="u">+</span></div>
+        <div class="d">כולל מונחי ליבה</div>
+      </div>
+      <div class="kpi">
+        <div class="k">נוכחות AI</div>
+        <div class="v">4<span class="u">/4</span></div>
+        <div class="d">ב-ChatGPT · Perplexity · Gemini · AI Overviews</div>
+      </div>
+    </div>
+
+    <p>
+      השיא במדדי ההתנהגות (משתמשים, זמן ממוצע) נרשם בפברואר-מרץ. במהלך מרץ
+      ראינו האטה זמנית הקשורה לקצב פרסומי התוכן (פירוט בפרק 10). אפריל-מאי
+      חוזרים לעלייה במדד <span class="ltr">Pages/Session</span>.
+    </p>
+  </section>
+
+  <!-- 02 ORGANIC TRAFFIC -->
+  <section class="chapter">
+    <div class="chap-head">
+      <span class="chap-num">02</span>
+      <h2>תנועה אורגנית · Semrush<span class="dot">.</span></h2>
+    </div>
+
+    <p class="lede-block">
+      העקומה של Semrush מציגה צמיחה רציפה לאורך 6 חודשים, עם תאוצה ברורה החל
+      מנובמבר 2025. הציר העיקרי הוא Organic Search.
+    </p>
+
+    <div class="figure">
+      <img src="assets/semrush_traffic.png" alt="Semrush Traffic Analytics · Contguard">
+      <div class="cap">Source · Semrush Traffic Analytics · Last 6 months</div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi">
+        <div class="k">Visits · Mar 26</div>
+        <div class="v ltr">23.3K</div>
+        <div class="d up">▲ +18.35%</div>
+      </div>
+      <div class="kpi">
+        <div class="k">Unique Visitors</div>
+        <div class="v ltr">4K</div>
+        <div class="d down">−9.72%</div>
+      </div>
+      <div class="kpi">
+        <div class="k">Pages / Visit</div>
+        <div class="v ltr">1.34</div>
+        <div class="d down">−43.69%</div>
+      </div>
+      <div class="kpi">
+        <div class="k">Avg. Visit Duration</div>
+        <div class="v ltr">18:31</div>
+        <div class="d up">▲ משמעותי</div>
+      </div>
+    </div>
+
+    <p>
+      העלייה הדרמטית בזמן השהייה הממוצע מצביעה על תנועה <b>איכותית יותר</b>. המבקרים שמגיעים אורגנית מבלים זמן ארוך יותר באתר ביחס לתקופה הקודמת.
+    </p>
+  </section>
+
+  <!-- 03 KEYWORD POSITIONS -->
+  <section class="chapter">
+    <div class="chap-head">
+      <span class="chap-num">03</span>
+      <h2>מיקומי מילות מפתח<span class="dot">.</span></h2>
+    </div>
+
+    <p class="lede-block">
+      טבלת התקדמות עבור מילות הליבה במעקב, בשלוש נקודות זמן: 01/03 · 05/04 · 03/05.
+    </p>
+
+    <table class="report">
+      <thead>
+        <tr>
+          <th>Keyword</th>
+          <th class="num">01/03</th>
+          <th class="num">05/04</th>
+          <th class="num">03/05</th>
+          <th class="num">שינוי</th>
+          <th class="num">AI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="kw ltr">cargo risk management platform</td>
+          <td class="num"><span class="pill pill-mid">3</span></td>
+          <td class="num"><span class="pill pill-mid">3</span></td>
+          <td class="num"><span class="pill pill-1">1</span></td>
+          <td class="num trend up">▲ 2</td>
+          <td class="num">●</td>
+        </tr>
+        <tr>
+          <td class="kw ltr">24/7/365 Escalation Center</td>
+          <td class="num"><span class="pill pill-low">100+</span></td>
+          <td class="num"><span class="pill pill-low">100+</span></td>
+          <td class="num"><span class="pill pill-1">1</span></td>
+          <td class="num trend up">▲ 99</td>
+          <td class="num">●</td>
+        </tr>
+        <tr>
+          <td class="kw ltr">The Economics of Supply Chain Visibility</td>
+          <td class="num"><span class="pill pill-low">·</span></td>
+          <td class="num"><span class="pill pill-low">·</span></td>
+          <td class="num"><span class="pill pill-1">1</span></td>
+          <td class="num trend up">▲ נכנסה למקום 1</td>
+          <td class="num">●</td>
+        </tr>
+        <tr>
+          <td class="kw ltr">american supply chain summit 2025</td>
+          <td class="num"><span class="pill pill-mid">6</span></td>
+          <td class="num"><span class="pill pill-mid">5</span></td>
+          <td class="num"><span class="pill pill-mid">3</span></td>
+          <td class="num trend up">▲ 3</td>
+          <td class="num"></td>
+        </tr>
+        <tr>
+          <td class="kw ltr">american supply chain summit</td>
+          <td class="num"><span class="pill pill-mid">17</span></td>
+          <td class="num"><span class="pill pill-mid">9</span></td>
+          <td class="num"><span class="pill pill-mid">5</span></td>
+          <td class="num trend up">▲ 12</td>
+          <td class="num"></td>
+        </tr>
+        <tr>
+          <td class="kw ltr">american supply chain</td>
+          <td class="num"><span class="pill pill-low">100+</span></td>
+          <td class="num"><span class="pill pill-low">50+</span></td>
+          <td class="num"><span class="pill pill-mid">5</span></td>
+          <td class="num trend up">▲ 95</td>
+          <td class="num"></td>
+        </tr>
+        <tr>
+          <td class="kw ltr">supply chain visibility example</td>
+          <td class="num"><span class="pill pill-mid">9</span></td>
+          <td class="num"><span class="pill pill-mid">7</span></td>
+          <td class="num"><span class="pill pill-mid">7</span></td>
+          <td class="num trend up">▲ 2</td>
+          <td class="num"></td>
+        </tr>
+        <tr>
+          <td class="kw ltr">visibility into supply chain logistics</td>
+          <td class="num"><span class="pill pill-low">·</span></td>
+          <td class="num"><span class="pill pill-low">33</span></td>
+          <td class="num"><span class="pill pill-low">31</span></td>
+          <td class="num trend up">▲ נכנסה ועלתה</td>
+          <td class="num"></td>
+        </tr>
+        <tr>
+          <td class="kw ltr">visibility supply chain management</td>
+          <td class="num"><span class="pill pill-low">58</span></td>
+          <td class="num"><span class="pill pill-low">58</span></td>
+          <td class="num"><span class="pill pill-low">54</span></td>
+          <td class="num trend up">▲ 4</td>
+          <td class="num"></td>
+        </tr>
+        <tr>
+          <td class="kw ltr">supply chain visibility cost</td>
+          <td class="num"><span class="pill pill-low">60</span></td>
+          <td class="num"><span class="pill pill-low">60</span></td>
+          <td class="num"><span class="pill pill-low">60+</span></td>
+          <td class="num trend flat">ללא שינוי</td>
+          <td class="num"></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source">Source · Position Tracking · Mar-May 2026</div>
+  </section>
+
+  <!-- 04 TOP MOVERS -->
+  <section class="chapter">
+    <div class="chap-head">
+      <span class="chap-num">04</span>
+      <h2>הזנקות מהותיות<span class="dot">.</span></h2>
+    </div>
+    <p class="lede-block">
+      שלוש מילים שעברו קפיצה משמעותית בחודש האחרון, סביב עמודי ליבה של האתר.
+    </p>
+
+    <div class="movers">
+      <div class="mover">
+        <div class="l ltr">24/7/365 Escalation Center</div>
+        <div class="row">
+          <span class="from ltr">100+</span>
+          <span class="arrow">→</span>
+          <span class="to">1</span>
+        </div>
+        <p>קפיצה ממיקום נחות לעמוד הראשון. עמוד מרכז הבקרה הוא נכס אסטרטגי.</p>
+      </div>
+      <div class="mover">
+        <div class="l ltr">cargo risk management platform</div>
+        <div class="row">
+          <span class="from ltr">3</span>
+          <span class="arrow">→</span>
+          <span class="to">1</span>
+        </div>
+        <p>מונח קטגוריה חזק שעלה לעמדה ראשונה. מקור תנועה איכותי לטווח ארוך.</p>
+      </div>
+      <div class="mover">
+        <div class="l ltr">american supply chain</div>
+        <div class="row">
+          <span class="from ltr">100+</span>
+          <span class="arrow">→</span>
+          <span class="to">5</span>
+        </div>
+        <p>חציית עמוד ראשון לראשונה. עוד יש מקום לעלות, אבל הכיוון ברור.</p>
+      </div>
+    </div>
+
+    <p>
+      ההזנקות נובעות מעבודה ממוקדת על תוכן ועל עמודי הליבה. ככל שמושקע תוכן רלוונטי
+      בעמוד מסוים, המיקום שלו זז.
+    </p>
+  </section>
+
+  <!-- 05 AI AUTHORITY -->
+  <section class="chapter">
+    <div class="chap-head">
+      <span class="chap-num">05</span>
+      <h2>נוכחות במנועי AI<span class="dot">.</span></h2>
+    </div>
+
+    <p class="lede-block">
+      ארבעת מונחי הליבה שנבדקו מופיעים כתוצאה במנועי תשובות מבוססי AI.
+      הקידום האורגני של 2026 כולל גם להיות מצוטט במקום שבו המשתמשים שואלים.
+    </p>
+
+    <div class="ai-list">
+      <div class="ai-row">
+        <span class="kw ltr">cargo risk management platform</span>
+        <span class="dot">●</span>
+      </div>
+      <div class="ai-row">
+        <span class="kw ltr">24/7/365 Escalation Center</span>
+        <span class="dot">●</span>
+      </div>
+      <div class="ai-row">
+        <span class="kw ltr">The Economics of Supply Chain Visibility</span>
+        <span class="dot">●</span>
+      </div>
+      <div class="ai-row">
+        <span class="kw ltr">supply chain visibility example</span>
+        <span class="dot">●</span>
+      </div>
+    </div>
+
+    <div class="source">נבדק ב: ChatGPT · Perplexity · Gemini · Google AI Overviews</div>
+  </section>
+
+  <!-- 06 GA USERS -->
+  <section class="chapter">
+    <div class="chap-head">
+      <span class="chap-num">06</span>
+      <h2>Google Analytics · משתמשים<span class="dot">.</span></h2>
+    </div>
+
+    <p class="lede-block">
+      פילוח חודשי של משתמשים, משתמשים חדשים, משך סשן ממוצע ודפים-לסשן לאורך
+      חמשת חודשי הקידום.
+    </p>
+
+    <table class="report">
+      <thead>
+        <tr>
+          <th>מטריקה</th>
+          <th class="num">12 → 01</th>
+          <th class="num">01 → 02</th>
+          <th class="num">02 → 03</th>
+          <th class="num">03 → 04</th>
+          <th class="num">04 → 05</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="kw">משתמשים</td>
+          <td class="num">152</td>
+          <td class="num">164</td>
+          <td class="num" style="color:var(--purple); font-weight:700;">182</td>
+          <td class="num">134</td>
+          <td class="num">142</td>
+        </tr>
+        <tr>
+          <td class="kw">משתמשים חדשים</td>
+          <td class="num">73</td>
+          <td class="num">114</td>
+          <td class="num">106</td>
+          <td class="num">80</td>
+          <td class="num">81</td>
+        </tr>
+        <tr>
+          <td class="kw">משך סשן ממוצע</td>
+          <td class="num ltr">2:10</td>
+          <td class="num ltr">2:13</td>
+          <td class="num ltr">2:17</td>
+          <td class="num ltr">0:56</td>
+          <td class="num ltr">1:41</td>
+        </tr>
+        <tr>
+          <td class="kw">דפים לסשן</td>
+          <td class="num">1.39</td>
+          <td class="num">1.47</td>
+          <td class="num">1.45</td>
+          <td class="num">1.13</td>
+          <td class="num" style="color:var(--purple); font-weight:700;">1.51</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      השיא נרשם בפברואר-מרץ עם <b>182</b> משתמשים ו-<span class="ltr">2:17</span>
+      זמן ממוצע. הירידה במרץ-אפריל קשורה ישירות לקצב פרסומי התוכן בחודש מרץ. ראו פירוט בפרק 10. במדד <b>Pages/Session</b> אפשר לראות שהאתר חוזר לעלייה
+      במאי <span class="ltr">(1.51)</span>.
+    </p>
+  </section>
+
+  <!-- 07 LANDING PAGES -->
+  <section class="chapter">
+    <div class="chap-head">
+      <span class="chap-num">07</span>
+      <h2>דפי נחיתה מובילים<span class="dot">.</span></h2>
+    </div>
+
+    <p class="lede-block">
+      איפה התנועה האורגנית נוחתת בפועל, ואיך כל דף מתפקד מבחינת איכות
+      הסשן (דפים לסשן). תקופה: 01/03 → 01/05.
+    </p>
+
+    <table class="report">
+      <thead>
+        <tr>
+          <th>דף נחיתה</th>
+          <th class="num">משתמשים</th>
+          <th class="num">דפים לסשן</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="kw">Home Page</td>
+          <td class="num">144</td>
+          <td class="num" style="color:var(--purple); font-weight:700;">3.39</td>
+        </tr>
+        <tr>
+          <td class="kw ltr">Supply Chain Management Solutions</td>
+          <td class="num">65</td>
+          <td class="num">1.00</td>
+        </tr>
+        <tr>
+          <td class="kw ltr">Technology</td>
+          <td class="num">61</td>
+          <td class="num">1.53</td>
+        </tr>
+        <tr>
+          <td class="kw ltr">Resources</td>
+          <td class="num">48</td>
+          <td class="num" style="color:var(--purple); font-weight:700;">3.20</td>
+        </tr>
+        <tr>
+          <td class="kw ltr">Supply Chain Risk Management</td>
+          <td class="num">26</td>
+          <td class="num">1.44</td>
+        </tr>
+        <tr>
+          <td class="kw ltr">About Us</td>
+          <td class="num">11</td>
+          <td class="num">1.82</td>
+        </tr>
+        <tr>
+          <td class="kw ltr">Pharma &amp; Cosmetics Cold Chain</td>
+          <td class="num">8</td>
+          <td class="num" style="color:var(--purple); font-weight:700;">144.0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      <b>Home + Resources</b> מובילים גם בכמות וגם באיכות הסשן (3.2-3.4 דפים לסשן).
+      הדף של <b>Pharma Cold Chain</b> מציג מטריקה חריגה במיוחד: מספר קטן של מבקרים
+      שעוברים בממוצע 144 דפים בכל סשן, סימן לכניסות עומק של משתמשים מקצועיים.
+    </p>
+    <div class="source">Source · GA · 01 Mar → 01 May 2026</div>
+  </section>
+
+  <!-- 08 SEARCH VOLUME -->
+  <section class="chapter">
+    <div class="chap-head">
+      <span class="chap-num">08</span>
+      <h2>נפח חיפוש · מילים אסטרטגיות<span class="dot">.</span></h2>
+    </div>
+
+    <p class="lede-block">
+      המילים האסטרטגיות שאליהן מכוונת תוכנית התוכן, מסודרות לפי נפח חיפוש חודשי
+      ממוצע.
+    </p>
+
+    <div class="vol-list">
+      <div class="vol-row"><span class="kw ltr">supply chain risk management</span><div class="track"><div class="fill" style="width:100%;"></div></div><span class="v ltr">2,900</span></div>
+      <div class="vol-row"><span class="kw ltr">supply chain optimization</span><div class="track"><div class="fill" style="width:100%;"></div></div><span class="v ltr">2,900</span></div>
+      <div class="vol-row"><span class="kw ltr">supply chain risk management plan</span><div class="track"><div class="fill" style="width:30%;"></div></div><span class="v ltr">880</span></div>
+      <div class="vol-row"><span class="kw ltr">supply chain optimization software</span><div class="track"><div class="fill" style="width:30%;"></div></div><span class="v ltr">880</span></div>
+      <div class="vol-row"><span class="kw ltr">supply chain risk management solutions</span><div class="track"><div class="fill" style="width:25%;"></div></div><span class="v ltr">720</span></div>
+      <div class="vol-row"><span class="kw ltr">supply chain network optimization</span><div class="track"><div class="fill" style="width:20%;"></div></div><span class="v ltr">590</span></div>
+      <div class="vol-row"><span class="kw ltr">global cargo tracking</span><div class="track"><div class="fill" style="width:20%;"></div></div><span class="v ltr">590</span></div>
+      <div class="vol-row"><span class="kw ltr">global supply chain risk management</span><div class="track"><div class="fill" style="width:17%;"></div></div><span class="v ltr">480</span></div>
+      <div class="vol-row"><span class="kw ltr">supply chain visibility</span><div class="track"><div class="fill" style="width:11%;"></div></div><span class="v ltr">320</span></div>
+      <div class="vol-row"><span class="kw ltr">cargo monitoring</span><div class="track"><div class="fill" style="width:3%;"></div></div><span class="v ltr">70</span></div>
+    </div>
+    <div class="source">Source · Semrush · Monthly Search Volume</div>
+  </section>
+
+  <!-- 09 PAGE-1 KEYWORDS -->
+  <section class="chapter">
+    <div class="chap-head">
+      <span class="chap-num">09</span>
+      <h2>מילים בעמוד הראשון של גוגל<span class="dot">.</span></h2>
+    </div>
+
+    <p class="lede-block">
+      רשימה של מילות מפתח שכבר נמצאות במיקום 1-10 בגוגל, עם המיקום הנוכחי ונפח החיפוש
+      החודשי הממוצע. בקצרה, אלה המילים שכבר מביאות תנועה אורגנית עכשיו.
+    </p>
+
+    <table class="report">
+      <thead>
+        <tr>
+          <th>Keyword</th>
+          <th class="num">מיקום</th>
+          <th class="num">נפח חיפוש</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="kw ltr">end to end supply chain visibility</td><td class="num"><span class="pill pill-1">1</span></td><td class="num ltr">590</td></tr>
+        <tr><td class="kw ltr">end to end visibility in supply chain</td><td class="num"><span class="pill pill-1">1</span></td><td class="num ltr">480</td></tr>
+        <tr><td class="kw ltr">end-to-end visibility in supply chain</td><td class="num"><span class="pill pill-1">1</span></td><td class="num ltr">390</td></tr>
+        <tr><td class="kw ltr">global logistics visibility</td><td class="num"><span class="pill pill-1">1</span></td><td class="num ltr">210</td></tr>
+        <tr><td class="kw ltr">end to end visibility supply chain</td><td class="num"><span class="pill pill-top">2</span></td><td class="num ltr">480</td></tr>
+        <tr><td class="kw ltr">supply chain tracker</td><td class="num"><span class="pill pill-top">2</span></td><td class="num ltr">50</td></tr>
+        <tr><td class="kw ltr">bio pharma supply chain risk</td><td class="num"><span class="pill pill-mid">4</span></td><td class="num ltr">390</td></tr>
+        <tr><td class="kw ltr">logistics visibility</td><td class="num"><span class="pill pill-mid">5</span></td><td class="num ltr">320</td></tr>
+        <tr><td class="kw ltr">shipment monitoring</td><td class="num"><span class="pill pill-mid">6</span></td><td class="num ltr">140</td></tr>
+        <tr><td class="kw ltr">pharma supply chain strategy</td><td class="num"><span class="pill pill-mid">8</span></td><td class="num ltr">320</td></tr>
+        <tr><td class="kw ltr">real time visibility in logistics</td><td class="num"><span class="pill pill-mid">8</span></td><td class="num ltr">90</td></tr>
+      </tbody>
+    </table>
+
+    <p>
+      בולט במיוחד שמשפחת המונחים <b>end-to-end visibility</b> נכבשה כמעט במלואה. ארבע גרסאות שונות של אותו מונח נמצאות במקום הראשון בגוגל. זו אחיזה משמעותית
+      בנושא ליבה של Contguard.
+    </p>
+    <div class="source">Source · Position Tracking · May 2026</div>
+  </section>
+
+  <!-- 10 NOTE ON MARCH -->
+  <section class="chapter">
+    <div class="chap-head">
+      <span class="chap-num">10</span>
+      <h2>הערה על חודש מרץ<span class="dot">.</span></h2>
+    </div>
+
+    <p class="lede-block">
+      במהלך חודש מרץ כמעט ולא עלו לאתר מאמרים חדשים, ולכן ראינו האטה זמנית
+      במדדי המעורבות ובמשתמשים. זו לא תקלה, זו תקופת שתיקה שהקידום משלם
+      עליה מיד.
+    </p>
+
+    <div class="note">
+      <div class="tag">תזכורת</div>
+      <p>
+        קידום אורגני הוא מנגנון מצטבר. <b>חודש בלי תוכן</b> מתבטא ישירות בירידה
+        בתאוצה ובמדדי הסשן. לעומת זאת, חודש עם 4 מאמרים איכותיים בנושאי הליבה
+        מתבטא בעלייה במיקומים ובכניסות חדשות.
+      </p>
+      <div class="sig">שניר · דוח מאי 2026</div>
+    </div>
+
+    <p>
+      באפריל-מאי חזרנו לקצב פרסום מלא בעזרת מגוון הכלים שלנו, וכבר רואים
+      את ההשפעה, בעיקר במדד <b>Pages/Session</b> שעלה ל-1.51 ובמיקומים
+      החדשים שהוצגו בפרקים 3 ו-4.
+    </p>
+  </section>
+
+  <!-- 11 MAY PLAN -->
+  <section class="chapter">
+    <div class="chap-head">
+      <span class="chap-num">11</span>
+      <h2>תוכנית מאי<span class="dot">.</span></h2>
+    </div>
+
+    <p class="lede-block">
+      ממשיכים עם מגוון הכלים. חמישה צירי עבודה לחודש הקרוב, סביב הציר המרכזי
+      של תוכן ומיקומים.
+    </p>
+
+    <div class="plan">
+      <div class="plan-item">
+        <div class="n">01 · Content</div>
+        <div class="t">חזרה לקצב 4-5 מאמרים בחודש</div>
+        <p>סביב הצירים <span class="ltr">supply chain visibility</span>, <span class="ltr">cargo risk</span>, <span class="ltr">pharma cold chain</span>.</p>
+      </div>
+      <div class="plan-item">
+        <div class="n">02 · On-page</div>
+        <div class="t">חיזוק עמודי הליבה</div>
+        <p>עדכון <span class="ltr">title / meta / H1</span> בעמודי <span class="ltr">technology · risk-management · industry</span>.</p>
+      </div>
+      <div class="plan-item">
+        <div class="n">03 · AI / GEO</div>
+        <div class="t">הרחבת נוכחות במנועי AI</div>
+        <p>תוכן בפורמט <span class="ltr">FAQ + Schema</span> כדי להופיע ב-<span class="ltr">AI Overviews</span> וב-<span class="ltr">Perplexity</span>.</p>
+      </div>
+      <div class="plan-item">
+        <div class="n">04 · Technical</div>
+        <div class="t">סריקה טכנית רבעונית</div>
+        <p>בדיקת <span class="ltr">Core Web Vitals</span>, אינדוקס וקאנוניקלים. תיקון תקלות מ-<span class="ltr">Search Console</span>.</p>
+      </div>
+      <div class="plan-item">
+        <div class="n">05 · Measurement</div>
+        <div class="t">מעקב שבועי מסודר</div>
+        <p>דיווח קצר על מיקומים ועל התנועה האורגנית, בלי להמתין לסוף החודש.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 ASKS / NEXT -->
+  <section class="chapter">
+    <div class="chap-head">
+      <span class="chap-num">12</span>
+      <h2>בקשות ומה הלאה<span class="dot">.</span></h2>
+    </div>
+
+    <p class="lede-block">
+      שתי בקשות שיעזרו לנו להתקדם בקצב הנכון בחודש הקרוב.
+    </p>
+
+    <div class="asks" style="grid-template-columns:repeat(2,1fr);">
+      <div class="ask">
+        <div class="n">01</div>
+        <div class="t">אישור על קצב התוכן</div>
+        <p>4-5 מאמרים בחודש זו ההחלטה היחידה שתשפיע ישירות על המיקומים בחודש הבא. צריך אישור.</p>
+      </div>
+      <div class="ask">
+        <div class="n">02</div>
+        <div class="t">איש תוכן חדש לעבודה משותפת</div>
+        <p>הצטרף איש תוכן חדש לצוות, ואנחנו מקווים שזה יקל ויאיץ את קבלת ההחלטות לגבי התכנים החדשים. נשמח להגדיר ביחד תהליך עבודה ברור.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="doc-foot">
+    <div>
+      <div class="lockup">
+        <span class="client">Contguard</span>
+        <span class="x">×</span>
+        <span>SNIR<span class="dot">.</span></span>
+      </div>
+      <p style="margin-top:18px; color:var(--muted); font-size:14px; max-width:420px; margin-right:0; margin-left:auto; text-align:right;">
+        תודה שקראתם. שאלה, מחשבה או רעיון שעלה תוך כדי? לא צריך להמתין לדוח הבא. כתבו  ונדבר.
+      </p>
+    </div>
+
+    <div class="contact">
+      <span class="k">שם</span><span class="v">שניר זיו</span>
+      <span class="k">אימייל</span><span class="v ltr">snir@snirdote.co.il</span>
+      <span class="k">דוח</span><span class="v ltr">May 2026</span>
+    </div>
+
+    <div class="copyright">
+      <span>© 2026 Snir<span style="color:var(--purple)">.</span> · Prepared for Contguard</span>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
